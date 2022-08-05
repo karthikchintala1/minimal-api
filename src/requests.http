@@ -1,0 +1,27 @@
+# VARIABLES
+@hostname = localhost
+@port = 5143
+@host = http://{{hostname}}:{{port}}
+@contentType = application/json
+
+## Get a user by Id
+GET {{host}}/user/1
+
+## update
+PUT {{host}}/user/update/1
+Content-Type: {{contentType}}
+
+{
+	"userName": "kchintala",
+	"firstName": "Karthik",
+	"lastName": "Chintala"
+}
+
+## after update, Get a user by Id 1
+GET {{host}}/user/1
+
+### delete user with id 1
+DELETE {{host}}/user/1
+
+## after deleting user with id 1, try to fetch user with id 1
+GET {{host}}/user/1
