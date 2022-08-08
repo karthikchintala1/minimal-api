@@ -31,7 +31,7 @@ namespace MinimalAPIs.Repositories
 
         public User GetUser(int id)
         {
-            return _users?.FirstOrDefault(u => u.Id == id);
+            return _users.FirstOrDefault(u => u.Id == id);
         }
 
         public Task<User> GetUserAsync(int id, CancellationToken cancellationToken)

@@ -25,3 +25,5 @@ DELETE {{host}}/user/1
 
 ## after deleting user with id 1, try to fetch user with id 1
 GET {{host}}/user/1
+#
+DELETE {{host}}/product/delete/1
