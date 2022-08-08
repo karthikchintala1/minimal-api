@@ -20,7 +20,9 @@ namespace MinimalAPIs.Modules
         private IResult CreateProduct(HttpContext context, Product product, IProductsRepository productsRepo)
         {
             var result = context.Request.Validate(product);
-            if (!product.IsValid()) return Results.BadRequest();
+            if (!result.IsValid) return Results.BadRequest();
+            //if (!product.IsValid()) return Results.BadRequest();
+
             productsRepo.CreateProduct(product);
             return Results.StatusCode(201);
         }
@@ -32,9 +34,11 @@ namespace MinimalAPIs.Modules
             return Results.Ok(repo.GetProductById(id));
         }
 
-        private IResult UpdateProduct(int id, Product product, IProductsRepository productRepo)
+        private IResult UpdateProduct(HttpContext context, int id, Product product, IProductsRepository productRepo)
         {
-            if (!product.IsValid()) return Results.BadRequest();
+            var result = context.Request.Validate(product);
+            if (!result.IsValid) return Results.BadRequest();
+            //if (!product.IsValid()) return Results.BadRequest();
 
             productRepo.UpdateProduct(id, product);
             return Results.Ok();
