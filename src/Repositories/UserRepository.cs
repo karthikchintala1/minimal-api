@@ -37,8 +37,6 @@ namespace MinimalAPIs.Repositories
         public Task<User> GetUserAsync(int id, CancellationToken cancellationToken)
         {
             return Task.FromResult(GetUser(id));
-            //Task.Run(() => GetUser(id)), cancellationToken);
-            //return Task.FromResult(GetUser(id));
         }
 
         public bool UpdateUser(int id, User user)

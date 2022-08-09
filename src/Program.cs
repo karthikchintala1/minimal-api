@@ -24,9 +24,6 @@ app.MapGet("/user/{id}", async (int id, IUserRepository userRepository, Cancella
 {
     await Task.Delay(5000, cancellationToken);
     return await userRepository.GetUserAsync(id, cancellationToken);
-    //if (user is null) return Results.BadRequest();
-
-    //return Results.Ok(user);
 }).WithName("GetUsers");
 
 app.MapPut("/user/update/{id}", (int id, User user, IUserRepository userRepository) =>
